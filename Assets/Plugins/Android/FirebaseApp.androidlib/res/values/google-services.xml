@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://golpokotha-ar-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">706045490049</string>
+  <string name="google_storage_bucket" translatable="false">golpokotha-ar.appspot.com</string>
+  <string name="project_id" translatable="false">golpokotha-ar</string>
+  <string name="google_api_key" translatable="false">AIzaSyCFNA6qbP7zGWcvMmTaPLA4u6EctzYtzp4</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCFNA6qbP7zGWcvMmTaPLA4u6EctzYtzp4</string>
+  <string name="google_app_id" translatable="false">1:706045490049:android:cf0d4bd91ec5e7af0aee80</string>
+  <string name="default_android_client_id" translatable="false">706045490049-dejgmg0cqohhiah65h6mm9nm7090us03.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">706045490049-hqjv9tcq0tlfaugfv64gd91lf2qrnlp5.apps.googleusercontent.com</string>
+</resources>

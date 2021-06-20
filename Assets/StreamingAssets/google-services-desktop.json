@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "706045490049",
+    "firebase_url": "https://golpokotha-ar-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "golpokotha-ar",
+    "storage_bucket": "golpokotha-ar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706045490049:android:cf0d4bd91ec5e7af0aee80",
+        "android_client_info": {
+          "package_name": "com.tinkers.golpokotha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706045490049-dejgmg0cqohhiah65h6mm9nm7090us03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tinkers.golpokotha",
+            "certificate_hash": "3ce38e00d217f54e03dbeae415d5516b41fdb88e"
+          }
+        },
+        {
+          "client_id": "706045490049-hqjv9tcq0tlfaugfv64gd91lf2qrnlp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFNA6qbP7zGWcvMmTaPLA4u6EctzYtzp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706045490049-hqjv9tcq0tlfaugfv64gd91lf2qrnlp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

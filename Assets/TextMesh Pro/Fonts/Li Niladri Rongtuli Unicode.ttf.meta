@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3b96b9d2ab741bb4181b4fbe6944ed11
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Li Niladri Rongtuli Unicode
+  fontNames:
+  - Li Niladri Rongtuli Unicode
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
