@@ -34,6 +34,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using TMPro;
 // using System.Web;
 
 public partial class Wit3D : MonoBehaviour {
@@ -44,6 +45,10 @@ public partial class Wit3D : MonoBehaviour {
 
 	public GameObject recordingButton;
 	public GameObject tryAgainTxt;
+	[SerializeField] GameObject tutPanel;
+	[SerializeField] GameObject endPanel;
+	[SerializeField] GameObject rainPrefab;
+	[SerializeField] GameObject character;
 	// Audio variables
 	//public AudioSource s;
 	public AudioClip recording;
@@ -71,11 +76,23 @@ public partial class Wit3D : MonoBehaviour {
 		// set samplerate to 16000 for wit.ai
 		samplerate = 16000;
 
+/*		foreach (string device in Microphone.devices)
+		{
+			print("Name: " + device);
+			//debugPanel.text = "\n\n"+device + "\n";
+
+			deviceName = device;
+		}*/
+
 	}
 
 	//this is called when button in hold down
 	public void StartRecording()
 	{
+		if (tutPanel.activeInHierarchy) 
+		{
+			tutPanel.SetActive(false);
+		}
 		//deactive try again buton..
 		tryAgainTxt.SetActive(false);
 
@@ -95,6 +112,7 @@ public partial class Wit3D : MonoBehaviour {
 		}
 		catch(Exception e)
 		{
+			//UnityEngine.Debug.LogError(e);
 			HandleException();
 		}
 	}
@@ -109,7 +127,7 @@ public partial class Wit3D : MonoBehaviour {
 	public void StopRecording()
 	{
 		//Hide the button..
-		recordingButton.SetActive(false);
+		//recordingButton.SetActive(false);
 
 		try
 		{
@@ -126,7 +144,7 @@ public partial class Wit3D : MonoBehaviour {
 			//s.Play();
 			//save audio..
 			SavWav.Save("sample", recording);
-
+			//UnityEngine.Debug.LogError(SavWav.filepath);
 			// At this point, we can delete the existing audio clip
 			recording = null;
 
@@ -134,12 +152,13 @@ public partial class Wit3D : MonoBehaviour {
 			// url = "https://api.wit.ai/message?v=20160305&q=Put%20the%20box%20on%20the%20shelf";
 
 			//Start a coroutine called "WaitForRequest" with that WWW variable passed in as an argument
-			string witAiResponse = GetJSONText("Assets/sample.wav");
+			string witAiResponse = GetJSONText(SavWav.filepath);
 
 			Handle(witAiResponse);
 		}
 		catch(Exception e)
-		{
+		{ 
+			//debugPanel.text = "\n\n" + e + "\n";
 			HandleException();
 		}
 	}

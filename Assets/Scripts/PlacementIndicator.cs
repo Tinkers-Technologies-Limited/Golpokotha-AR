@@ -36,8 +36,8 @@ public class PlacementIndicator : MonoBehaviour
             if (!visual.activeInHierarchy)
             {
                 visual.SetActive(true);
+                StartCoroutine(ObjectSpawner.instance.ShowMarkerAndReadyToSpawn());
             }
-            StartCoroutine(ObjectSpawner.instance.ShowMarketAndReadyToSpawn(transform.position));
         }
     }
 }

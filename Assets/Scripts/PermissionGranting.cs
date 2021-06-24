@@ -7,23 +7,22 @@ using UnityEngine.Android;
 public class PermissionGranting : MonoBehaviour
 {
 
-    GameObject dialog = null;
+    //GameObject dialog = null;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitForSeconds(10f);
 
 #if PLATFORM_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
         {
             Permission.RequestUserPermission(Permission.Microphone);
-            dialog = new GameObject();
+            //dialog = new GameObject();
         }
 #endif
     }
 
-    void OnGUI()
+   /* void OnGUI()
     {
 #if PLATFORM_ANDROID
         if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
@@ -43,6 +42,6 @@ public class PermissionGranting : MonoBehaviour
 #endif
 
         // Now you can do things with the microphone
-    }
+    }*/
 
 }

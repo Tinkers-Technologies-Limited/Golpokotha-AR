@@ -5,7 +5,7 @@ using System.Collections;
 using SimpleJSON;
 using System.Text;
 using System;
-
+using DigitalRuby.RainMaker;
 public partial class Wit3D : MonoBehaviour
 {
 	string _name = "";
@@ -24,15 +24,16 @@ public partial class Wit3D : MonoBehaviour
 		totalAttempt++;
 		try
 		{
+
 			var N = JSON.Parse(textToParse);
 
 			float intent_Confidence = float.Parse(N["intents"][0]["confidence"].Value);
 			string intent_Name = N["intents"][0]["name"].Value.ToLower();
 			string userSpoken_text = N["text"];
 
-			/*		Debug.LogError(intent_Confidence);
+					Debug.LogError(intent_Confidence);
 					Debug.LogError(intent_Name);
-					Debug.LogError(userSpoken_text);*/
+					Debug.LogError(userSpoken_text);
 
 
 			// what function should I call?
@@ -43,12 +44,17 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5], confidences[6], totalPlayedTime);
 				UpdateConfidence(0, intent_Confidence);
 
-				if (intent_Confidence >= 0.98f)
+				if (intent_Confidence >= 0.97f)
 				{
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					rainPrefab.transform.position = character.transform.position;
+					rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0.1f;
 
-					// এইটা রিডিং পড়ার সাথে সাথে  গাছের উপর বৃষ্টির মত পানি পড়বে
-
+					StartCoroutine(AfterRain());
 				}
+				else
+					HandleException();
 
 			}
 			else if (intent_Name.Equals("name_intent"))
@@ -58,10 +64,14 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5], confidences[6], totalPlayedTime);
 				UpdateConfidence(1, intent_Confidence);
 
-				if (intent_Confidence >= 0.99f)
+				if (intent_Confidence >= 0.98f)
 				{
-					//কিরেনা - খুব সুন্দর। তুমি কেমন আছো?
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					NextAnim(0);
 				}
+				else
+					HandleException();
 			}
 			else if (intent_Name.Equals("im_fine_intent"))
 			{
@@ -69,10 +79,15 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5], confidences[6], totalPlayedTime);
 				UpdateConfidence(2, intent_Confidence);
 
-				if (intent_Confidence >= 0.98f)
+				if (intent_Confidence >= 0.97f)
 				{
 					//মি.গাছ - কিন্তু আমি ভালো নেই। আমার মন ভীষণ খারাপ।
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					NextAnim(1);
 				}
+				else
+					HandleException();
 			}
 			else if (intent_Name.Equals("asking_sad_intent"))
 			{
@@ -80,12 +95,17 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5], confidences[6], totalPlayedTime);
 				UpdateConfidence(3, intent_Confidence);
 
-				if (intent_Confidence >= 0.974f)
+				if (intent_Confidence >= 0.97f)
 				{
 					//মি.গাছ - সে অনেক কথা! (খুশি হয়ে) আমি এক সময় তোমার মত ছোট ছিলাম। 
 					//এখন আমার বয়স ১৫০ বছর। 
 					//তুমি কি জানো আমি কিভাবে এতো বড় হলাম?
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					NextAnim(2);
 				}
+				else
+					HandleException();
 			}
 			else if (intent_Name.Equals("asking_getting_big_intent"))
 			{
@@ -93,10 +113,15 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4] + intent_Confidence, confidences[5], confidences[6], totalPlayedTime);
 				UpdateConfidence(4, intent_Confidence);
 
-				if (intent_Confidence >= 0.96f)
+				if (intent_Confidence >= 0.95f)
 				{
 					//মি.গাছ - তাহলে শোনো, আমি যখন খুব ছোট ছিলাম তখন একদিন এক দয়ালু মানুষ আমাকে তার বাড়ির বাগানে বপন করে। 
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					NextAnim(3);
 				}
+				else
+					HandleException();
 			}
 			else if (intent_Name.Equals("asking_getting_big2_intent"))
 			{
@@ -104,14 +129,21 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5] + intent_Confidence, confidences[6], totalPlayedTime);
 				UpdateConfidence(5, intent_Confidence);
 
-				if (intent_Confidence >= 0.93f)
+				if (intent_Confidence >= 0.92f)
 				{
 					//মি.গাছ - না, গাছের বড় হওয়ার যত্ন এবং পানির প্রয়োজন। 
+
+					recordingButton.SetActive(false);
+					TextManager.instance.ResetDisplayTexts();
+					NextAnim(4);
 
 					//TAP পানির পাত্র এবং আমাদের আরও পানি দিয়ে বড় হতে সাহায্য করো!
 					//মি.গাছ - আহ ধন্যবাদ!
 					//জানো আগে আমার সাথে আমার অনেক ভাই - বোন, বন্ধু - বান্ধব ছিল। কিন্তু এখানে আমি একা!তুমি কি জানো তারা এখন কোথায় ?
+					//These are handled in stateHandler script..
 				}
+				else
+					HandleException();
 			}
 			else if (intent_Name.Equals("asking_where_intent"))
 			{
@@ -119,20 +151,55 @@ public partial class Wit3D : MonoBehaviour
 													confidences[4], confidences[5], confidences[6] + intent_Confidence, totalPlayedTime);
 				UpdateConfidence(6, intent_Confidence);
 
-				if (intent_Confidence >= 0.97f)
+				if (intent_Confidence >= 0.96f)
 				{
+					//Debug.LogError(5);
 					//end
+					endPanel.SetActive(true);
+					TextManager.instance.ResetDisplayTexts();
+					recordingButton.SetActive(false);
+
+				}
+				else
+				{
+					//Debug.LogError(0000);
+					HandleException();
 				}
 			}
 			else
 			{
+				
 				HandleException();
 			}
 		}
 		catch(Exception e)
 		{
+			//Debug.LogError(e);
 			HandleException();
 		}
+
+	}
+
+	IEnumerator AfterRain()
+	{
+		yield return new WaitForSeconds(3f);
+		rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0f;
+		yield return new WaitForSeconds(2f);
+		character.GetComponent<StateHandler>().PlayC3();
+
+	}
+	void NextAnim(int which)
+	{
+		if(which == 0)
+			character.GetComponent<StateHandler>().PlayC4();
+		else if (which == 1)
+			character.GetComponent<StateHandler>().PlayC5();
+		else if (which == 2)
+			character.GetComponent<StateHandler>().PlayC6();
+		else if (which == 3)
+			character.GetComponent<StateHandler>().PlayC7();
+		else if (which == 4)
+			character.GetComponent<StateHandler>().PlayC8();
 
 	}
 

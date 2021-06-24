@@ -28,4 +28,11 @@ public class TextManager : MonoBehaviour
         textField.text = texts[i];
         i++;
     }
+
+    public void ResetDisplayTexts()
+    {
+        textField.text = "";
+    }
+
+   
 }
