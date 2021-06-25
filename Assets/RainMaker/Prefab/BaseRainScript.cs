@@ -79,7 +79,8 @@ namespace DigitalRuby.RainMaker
 
         private float lastRainIntensityValue = -1.0f;
         private float nextWindTime;
-
+        [Header("MI defined")]
+        public float rainStoppingThreshhold;
         private void UpdateWind()
         {
             if (EnableWind && WindZone != null && WindSpeedRange.y > 1.0f)
@@ -119,7 +120,7 @@ namespace DigitalRuby.RainMaker
                 audioSourceWind.Stop();
             }
 
-            audioSourceWind.Update();
+            audioSourceWind.Update(rainStoppingThreshhold);
         }
 
         private void CheckForRainChange()
@@ -287,9 +288,9 @@ namespace DigitalRuby.RainMaker
 
             CheckForRainChange();
             UpdateWind();
-            audioSourceRainLight.Update();
-            audioSourceRainMedium.Update();
-            audioSourceRainHeavy.Update();
+            audioSourceRainLight.Update(rainStoppingThreshhold);
+            audioSourceRainMedium.Update(rainStoppingThreshhold);
+            audioSourceRainHeavy.Update(rainStoppingThreshhold);
         }
 
         protected virtual float RainFallEmissionRate()
@@ -351,9 +352,9 @@ namespace DigitalRuby.RainMaker
             TargetVolume = 0.0f;
         }
 
-        public void Update()
+        public void Update(float rainStoppingThreshhold)
         {
-            if (AudioSource.isPlaying && (AudioSource.volume = Mathf.Lerp(AudioSource.volume, TargetVolume, Time.deltaTime)) == 0.0f)
+            if (AudioSource.isPlaying && (AudioSource.volume = Mathf.Lerp(AudioSource.volume, TargetVolume, Time.deltaTime + rainStoppingThreshhold)) == 0.0f)
             {
                 AudioSource.Stop();
             }

@@ -9498,7 +9498,7 @@ MonoBehaviour:
   RainSoundMedium: {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
   RainSoundHeavy: {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
   RainSoundAudioMixer: {fileID: 0}
-  RainIntensity: 1
+  RainIntensity: 0
   RainFallParticleSystem: {fileID: 19831730}
   RainExplosionParticleSystem: {fileID: 19824492}
   RainMistParticleSystem: {fileID: 19836512}
@@ -9508,7 +9508,8 @@ MonoBehaviour:
   WindZone: {fileID: 18204160}
   WindSpeedRange: {x: 50, y: 100, z: 500}
   WindChangeInterval: {x: 5, y: 30}
-  EnableWind: 1
+  EnableWind: 0
+  rainStoppingThreshhold: 0.08
   RainHeight: 25
   RainForwardOffset: -7
   RainMistHeight: 3

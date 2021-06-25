@@ -115,11 +115,14 @@ public class StateHandler : MonoBehaviour
 
         transform.GetChild(0).gameObject.SetActive(false);
 
-        rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0.1f;
+        rainPrefab.GetComponent<RainScript>().RainIntensity = 1f;
+        rainPrefab.GetComponent<RainScript>().EnableWind = true;
 
         yield return new WaitForSeconds(4f);
 
-        rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0f;
+        rainPrefab.GetComponent<RainScript>().RainIntensity = 0f;
+        rainPrefab.GetComponent<RainScript>().EnableWind = false;
+
 
         yield return new WaitForSeconds(2f);
 

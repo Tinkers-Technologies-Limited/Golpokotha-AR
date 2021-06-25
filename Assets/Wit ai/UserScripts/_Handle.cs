@@ -8,6 +8,7 @@ using System;
 using DigitalRuby.RainMaker;
 public partial class Wit3D : MonoBehaviour
 {
+	public AudioClip debugAudio;
 	string _name = "";
 	int totalAttempt;
 	//first scnee shesh hole btns ashbe, 
@@ -48,8 +49,8 @@ public partial class Wit3D : MonoBehaviour
 				{
 					recordingButton.SetActive(false);
 					TextManager.instance.ResetDisplayTexts();
-					rainPrefab.transform.position = character.transform.position;
-					rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0.1f;
+					rainPrefab.GetComponent<RainScript>().RainIntensity = 1f;
+					rainPrefab.GetComponent<RainScript>().EnableWind = true;
 
 					StartCoroutine(AfterRain());
 				}
@@ -183,11 +184,38 @@ public partial class Wit3D : MonoBehaviour
 	IEnumerator AfterRain()
 	{
 		yield return new WaitForSeconds(3f);
-		rainPrefab.GetComponent<RainScript2D>().RainIntensity = 0f;
+		rainPrefab.GetComponent<RainScript>().RainIntensity = 0f;
+		rainPrefab.GetComponent<RainScript>().EnableWind = false;
 		yield return new WaitForSeconds(2f);
 		character.GetComponent<StateHandler>().PlayC3();
 
 	}
+	/*private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			character.GetComponent<Animator>().Play("start");
+			AudioSource s = character.GetComponent<AudioSource>();
+			s.clip = debugAudio;
+			s.Play();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			character.GetComponent<StateHandler>().PlayC3();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4))
+			NextAnim(0);
+		else if (Input.GetKeyDown(KeyCode.Alpha5))
+			NextAnim(1);
+		else if (Input.GetKeyDown(KeyCode.Alpha6))
+			NextAnim(2);
+		else if (Input.GetKeyDown(KeyCode.Alpha7))
+			NextAnim(3);
+		else if (Input.GetKeyDown(KeyCode.Alpha8))
+			NextAnim(4);
+		else if (Input.GetKeyDown(KeyCode.Alpha9))
+			character.GetComponent<StateHandler>().PlayC9();
+	}*/
 	void NextAnim(int which)
 	{
 		if(which == 0)
