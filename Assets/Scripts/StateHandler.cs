@@ -121,10 +121,9 @@ public class StateHandler : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         rainPrefab.GetComponent<RainScript>().RainIntensity = 0f;
+
         rainPrefab.GetComponent<RainScript>().EnableWind = false;
-
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         PlayC9();
 
