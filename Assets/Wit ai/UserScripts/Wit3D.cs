@@ -157,7 +157,9 @@ public partial class Wit3D : MonoBehaviour {
 			Handle(witAiResponse);
 		}
 		catch(Exception e)
-		{ 
+		{
+			//UnityEngine.Debug.Log(5645);
+
 			//debugPanel.text = "\n\n" + e + "\n";
 			HandleException();
 		}

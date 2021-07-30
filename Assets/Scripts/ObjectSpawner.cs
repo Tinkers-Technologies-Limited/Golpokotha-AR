@@ -33,7 +33,7 @@ public class ObjectSpawner : MonoBehaviour
 
     [SerializeField] Vector3 afterPlacementScale;
 
-    bool canSpawn = false;
+    bool canSpawn = true;
     bool hasInternet;
 
     [SerializeField] GameObject tapToPlaceTxt;
@@ -69,6 +69,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             noInternetPanel.SetActive(false);
             hasInternet = true;
+            Debug.LogError(hasInternet);
         }
         else
         {
@@ -134,7 +135,8 @@ public class ObjectSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        mainCharacter.GetComponent<Animator>().Play("start");
+        //mainCharacter.GetComponent<Animator>().Play("start");
+        mainCharacter.transform.GetChild(0).GetComponent<Animator>().enabled = true;
         AudioSource s = mainCharacter.GetComponent<AudioSource>();
         s.clip = startAudio;
         s.Play();

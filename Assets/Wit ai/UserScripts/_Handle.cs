@@ -8,7 +8,7 @@ using System;
 using DigitalRuby.RainMaker;
 public partial class Wit3D : MonoBehaviour
 {
-	//public AudioClip debugAudio;
+	public AudioClip debugAudio;
 	string _name = "";
 	int totalAttempt;
 	//first scnee shesh hole btns ashbe, 
@@ -19,9 +19,10 @@ public partial class Wit3D : MonoBehaviour
 	{
 		confidences[i] += newConfidence;
 	}
-
+	
 	void Handle(string textToParse)
 	{
+		Debug.LogError(textToParse);
 		totalAttempt++;
 		try
 		{
@@ -175,7 +176,7 @@ public partial class Wit3D : MonoBehaviour
 		}
 		catch(Exception e)
 		{
-			//Debug.LogError(e);
+			Debug.LogError(e);
 			HandleException();
 		}
 
@@ -190,11 +191,12 @@ public partial class Wit3D : MonoBehaviour
 		character.GetComponent<StateHandler>().PlayC3();
 
 	}
-/*	private void Update()
+	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
-			character.GetComponent<Animator>().Play("start");
+			//character.GetComponent<Animator>().Play("start");
+			character.transform.GetChild(0).GetComponent<Animator>().enabled = true;
 			AudioSource s = character.GetComponent<AudioSource>();
 			s.clip = debugAudio;
 			s.Play();
@@ -215,7 +217,7 @@ public partial class Wit3D : MonoBehaviour
 			NextAnim(4);
 		else if (Input.GetKeyDown(KeyCode.Alpha9))
 		character.GetComponent<StateHandler>().PlayC9();
-	}*/
+	}
 	void NextAnim(int which)
 	{
 		if(which == 0)
