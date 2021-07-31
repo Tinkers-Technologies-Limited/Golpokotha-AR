@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5a46bda3295124c99b0e6537ac7252, type: 3}
+  m_Name: WitConfiguration
+  m_EditorClassIdentifier: 
+  application:
+    witConfiguration: {fileID: 0}
+    name: wonderscope_prototype_bangla
+    id: 473563177185221
+    lang: bn
+    isPrivate: 0
+    createdAt: 2021-05-11T08:57:23-0700
+  clientAccessToken: VSCE2I2C22MPEXYO7X36PELK2JPAZQHR
+  entities:
+  - witConfiguration: {fileID: 11400000}
+    id: 232721395051431
+    name: conversation
+    lookups: []
+    roles: []
+    keywords: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    lookups: []
+    roles: []
+    keywords: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    lookups: []
+    roles: []
+    keywords: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    lookups: []
+    roles: []
+    keywords: []
+  intents:
+  - witConfiguration: {fileID: 11400000}
+    id: 985391162262175
+    name: asking_getting_big2_intent
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []
+  - witConfiguration: {fileID: 0}
+    id: 
+    name: 
+    entities: []

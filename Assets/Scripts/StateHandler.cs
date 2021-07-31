@@ -40,15 +40,22 @@ public class StateHandler : MonoBehaviour
     }
     public void TapWaterPot()
     {
-        transform.GetChild(9).gameObject.SetActive(true);
+        transform.GetChild(10).gameObject.SetActive(true);
         TextManager.instance.LoadNextText();
     }
 
+    void DeactiveOtherModels(int currentModel)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+        transform.GetChild(currentModel).gameObject.SetActive(true);
+    }
     public void PlayC2()
     {
         //GetComponent<Animator>().Play("c2");
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(true);
+        DeactiveOtherModels(1);
         transform.GetChild(1).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c2;
@@ -57,9 +64,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC3()
     {
         //GetComponent<Animator>().Play("c3");
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(2).gameObject.SetActive(true);
-        transform.GetChild(2).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(3);
+        transform.GetChild(3).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c3;
         audioSource.Play();
@@ -67,9 +73,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC4()
     {
         //GetComponent<Animator>().Play("c4");
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(3).gameObject.SetActive(true);
-        transform.GetChild(3).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(4);
+        transform.GetChild(4).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c4;
         audioSource.Play();
@@ -77,9 +82,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC5()
     {
         //GetComponent<Animator>().Play("c5");
-        transform.GetChild(3).gameObject.SetActive(false);
-        transform.GetChild(4).gameObject.SetActive(true);
-        transform.GetChild(4).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(5);
+        transform.GetChild(5).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c5;
         audioSource.Play();
@@ -87,9 +91,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC6()
     {
         //GetComponent<Animator>().Play("c6");
-        transform.GetChild(4).gameObject.SetActive(false);
-        transform.GetChild(5).gameObject.SetActive(true);
-        transform.GetChild(5).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(6);
+        transform.GetChild(6).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c6;
         audioSource.Play();
@@ -97,9 +100,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC7()
     {
         //GetComponent<Animator>().Play("c7");
-        transform.GetChild(5).gameObject.SetActive(false);
-        transform.GetChild(6).gameObject.SetActive(true);
-        transform.GetChild(6).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(7);
+        transform.GetChild(7).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c7;
         audioSource.Play();
@@ -107,9 +109,8 @@ public class StateHandler : MonoBehaviour
     public void PlayC8()
     {
         //GetComponent<Animator>().Play("c8");
-        transform.GetChild(6).gameObject.SetActive(false);
-        transform.GetChild(7).gameObject.SetActive(true);
-        transform.GetChild(7).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(8);
+        transform.GetChild(8).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c8;
         audioSource.Play();
@@ -117,12 +118,18 @@ public class StateHandler : MonoBehaviour
     public void PlayC9()
     {
         //GetComponent<Animator>().Play("c9");
-        transform.GetChild(7).gameObject.SetActive(false);
-        transform.GetChild(8).gameObject.SetActive(true);
-        transform.GetChild(8).GetComponent<Animator>().enabled = true;
+        DeactiveOtherModels(9);
+        transform.GetChild(9).GetComponent<Animator>().enabled = true;
         //AudioSource s = GetComponent<AudioSource>();
         audioSource.clip = c9;
         audioSource.Play();
+    }
+    public void PlayStar()
+    {
+        //GetComponent<Animator>().Play("c9");
+        DeactiveOtherModels(2);
+        transform.GetChild(2).GetComponent<Animator>().enabled = true;
+        
     }
 
     private void Update()
@@ -143,11 +150,11 @@ public class StateHandler : MonoBehaviour
     {
         TextManager.instance.ResetDisplayTexts();
 
-        transform.GetChild(9).gameObject.SetActive(false);
+        transform.GetChild(10).gameObject.SetActive(false);
 
         rainPrefab.GetComponent<RainScript>().RainIntensity = 1f;
         rainPrefab.GetComponent<RainScript>().EnableWind = true;
-
+        PlayStar();
         yield return new WaitForSeconds(4f);
 
         rainPrefab.GetComponent<RainScript>().RainIntensity = 0f;

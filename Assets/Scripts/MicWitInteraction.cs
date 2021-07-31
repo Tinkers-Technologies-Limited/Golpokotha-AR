@@ -1,0 +1,55 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using com.facebook.witai.lib;
+using com.facebook.witai;
+using TMPro;
+
+public class MicWitInteraction : MonoBehaviour
+{
+    Wit wit;
+
+    public GameObject recordingButton;
+    public GameObject tryAgainTxt;
+
+    [SerializeField] GameObject tutPanel;
+
+
+    private void Start()
+    {
+        wit = GetComponent<Wit>();
+
+    }
+    /*public void ToggleActivation()
+    {
+        if (wit.Active) wit.Deactivate();
+        else
+        {
+            wit.Activate();
+        }
+    }*/
+
+    public void StopRecording()
+    {
+        wit.Deactivate();
+
+    }
+    public void StartRecording()
+    {
+        if (tutPanel.activeInHierarchy)
+        {
+            tutPanel.SetActive(false);
+        }
+        //deactive try again buton..
+        tryAgainTxt.SetActive(false);
+
+        if (!wit.Active)
+            wit.Activate();
+    }
+
+    public void HandleException()
+    {
+        tryAgainTxt.SetActive(true);
+        recordingButton.SetActive(true);
+    }
+}

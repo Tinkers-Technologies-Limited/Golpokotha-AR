@@ -72,7 +72,62 @@ ModelImporter:
   - first:
       74: -4579456676334355635
     second: Armature.003|Mukh norachora
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: All papri
+    second: {fileID: 2800000, guid: cf37121afc8295847b50dd456dd91cc7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bam hat mini with kata
+    second: {fileID: 2800000, guid: 359faba15d1a51147aa98595b6cf66a1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bam kan
+    second: {fileID: 2800000, guid: a962cf9e6004ef643852195fc78793de, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dan hat
+    second: {fileID: 2800000, guid: a4556ae90b0e96a4ca90b76f2ea461c1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dan hat mini
+    second: {fileID: 2800000, guid: 0316c5ecd2285ef4ea014a110ecab488, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Dan kan
+    second: {fileID: 2800000, guid: 3ad135e508f470845b13887ac83704b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Matha
+    second: {fileID: 2800000, guid: d8b438ab9b2e2a14b90916decf44ad90, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Middle of papri
+    second: {fileID: 2800000, guid: b162b9e1184c4bd408361db56a421508, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tob
+    second: {fileID: 2800000, guid: 089f57be7b347f84c861beec18ace2b8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: bam hat with Kata
+    second: {fileID: 2800000, guid: d95842f79ead2cd418b7d3e7645c82f4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: matte-black-color-solid-background-1920x1080
+    second: {fileID: 2800000, guid: e6f63cef83e9e1940b06343b2f51fb87, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

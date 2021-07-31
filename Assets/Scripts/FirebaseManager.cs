@@ -47,19 +47,20 @@ public class FirebaseManager : MonoBehaviour
             }
         });
 
-        StartCoroutine(testCor());
+        //StartCoroutine(testCor());
 
     }
 
-    IEnumerator testCor()
+  /*  IEnumerator testCor()
     {
         yield return new WaitForSeconds(3f);
-        getNextChildID();
-        yield return new WaitForSeconds(3f);
+        //getNextChildID();
+        //yield return new WaitForSeconds(3f);
         //Debug.LogError("l: " + cnt);
-        userId = cnt.ToString();
-        //Debug.LogError("u: "+userId);
-    }
+        //userId = cnt.ToString();
+        //Debug.LogError("u: " + userId);
+        saveData("test", 5, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 100);
+    }*/
 
     void InitFirebase()
     {
@@ -68,6 +69,8 @@ public class FirebaseManager : MonoBehaviour
         auth = FirebaseAuth.DefaultInstance;
 
         DBReference = FirebaseDatabase.DefaultInstance.RootReference;
+        
+
 
     }
 
@@ -95,9 +98,47 @@ public class FirebaseManager : MonoBehaviour
             this.interaction_7 = interaction_7;
             this.playTime = time;
         }
+
+        public Dictionary<string, System.Object> ToDictionary()
+        {
+            Dictionary<string, System.Object> result = new Dictionary<string, System.Object>();
+
+            result["username"] = username;
+            result["totalAttempt"] = totalAttempt;
+            result["interaction_1"] = interaction_1;
+            result["interaction_2"] = interaction_2;
+            result["interaction_3"] = interaction_3;
+            result["interaction_4"] = interaction_4;
+            result["interaction_5"] = interaction_5;
+            result["interaction_6"] = interaction_6;
+            result["interaction_7"] = interaction_7;
+            result["playTime"] = playTime;
+
+            return result;
+        }
+
     }
 
-    void writeNewUser(string userId,  string name, int totalAttempt, float interaction_1, float interaction_2, float interaction_3, float interaction_4,
+    private void writeNewUsers(string userId, string name, int totalAttempt, float interaction_1, float interaction_2, float interaction_3, float interaction_4,
+        float interaction_5, float interaction_6, float interaction_7, float time)
+    {
+        // Create new entry at /user-scores/$userid/$scoreid and at
+        // /leaderboard/$scoreid simultaneously
+        string key = DBReference.Child("users").Push().Key;
+
+        User user = new User(name, totalAttempt, interaction_1, interaction_2, interaction_3, interaction_4,
+            interaction_5, interaction_6, interaction_7, time);
+
+        Dictionary<string, System.Object> entryValues = user.ToDictionary();
+
+        Dictionary<string, System.Object> childUpdates = new Dictionary<string, System.Object>();
+        childUpdates["/users/" + key] = entryValues;
+        //childUpdates["/user-scores/" + userId + "/" + key] = entryValues;
+
+        DBReference.UpdateChildrenAsync(childUpdates);
+    }
+
+   /* void writeNewUser(string userId,  string name, int totalAttempt, float interaction_1, float interaction_2, float interaction_3, float interaction_4,
         float interaction_5, float interaction_6, float interaction_7, float time)
     {
         User user = new User(name, totalAttempt, interaction_1, interaction_2, interaction_3, interaction_4,
@@ -105,16 +146,16 @@ public class FirebaseManager : MonoBehaviour
         string json = JsonUtility.ToJson(user);
 
         DBReference.Child("users").Child(userId).SetRawJsonValueAsync(json);
-    }
+    }*/
 
     public void saveData(string name, int totalAttempt, float interaction_1, float interaction_2, float interaction_3, float interaction_4,
         float interaction_5, float interaction_6, float interaction_7, float playTime)
     {
-        writeNewUser(userId, name, totalAttempt, interaction_1, interaction_2, interaction_3, interaction_4,
+        writeNewUsers(userId, name, totalAttempt, interaction_1, interaction_2, interaction_3, interaction_4,
             interaction_5, interaction_6, interaction_7, Time.time);
     }
 
-    public void getNextChildID()
+    /*public void getNextChildID()
     {
         FirebaseDatabase.DefaultInstance.GetReference("users").GetValueAsync().ContinueWith(task => {
             if (task.IsFaulted)
@@ -125,13 +166,16 @@ public class FirebaseManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
+
+                //Debug.LogError(snapshot.Value);
                 // Do something with snapshot...
                 cnt = snapshot.ChildrenCount + 1;
+               
                 //Debug.LogError(cnt);
-                
+
             }
         });
 
-    }
+    }*/
 
 }

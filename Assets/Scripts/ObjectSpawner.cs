@@ -33,7 +33,7 @@ public class ObjectSpawner : MonoBehaviour
 
     [SerializeField] Vector3 afterPlacementScale;
 
-    bool canSpawn = true;
+    bool canSpawn = false;
     bool hasInternet;
 
     [SerializeField] GameObject tapToPlaceTxt;
@@ -69,7 +69,7 @@ public class ObjectSpawner : MonoBehaviour
         {
             noInternetPanel.SetActive(false);
             hasInternet = true;
-            Debug.LogError(hasInternet);
+            //Debug.LogError(hasInternet);
         }
         else
         {
