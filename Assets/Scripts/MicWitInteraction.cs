@@ -4,7 +4,6 @@ using UnityEngine;
 using com.facebook.witai.lib;
 using com.facebook.witai;
 using TMPro;
-
 public class MicWitInteraction : MonoBehaviour
 {
     Wit wit;
@@ -31,7 +30,14 @@ public class MicWitInteraction : MonoBehaviour
 
     public void StopRecording()
     {
-        wit.Deactivate();
+        try
+        {
+            wit.Deactivate();
+        }
+        catch
+        {
+            HandleException();
+        }
 
     }
     public void StartRecording()
@@ -43,8 +49,15 @@ public class MicWitInteraction : MonoBehaviour
         //deactive try again buton..
         tryAgainTxt.SetActive(false);
 
-        if (!wit.Active)
-            wit.Activate();
+        try
+        {
+            if (!wit.Active)
+                wit.Activate();
+        }
+        catch
+        {
+            HandleException();
+        }
     }
 
     public void HandleException()

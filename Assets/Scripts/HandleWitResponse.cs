@@ -47,7 +47,7 @@ public class HandleWitResponse : MonoBehaviour
             string userSpoken_text = response["text"];
 
             Debug.LogError(intent_Confidence);
-            Debug.LogError(intent_Name);
+            //Debug.LogError(intent_Name);
             Debug.LogError(userSpoken_text);
 			//Debug.Log("I heard: " + response[""]);
 
@@ -65,6 +65,7 @@ public class HandleWitResponse : MonoBehaviour
 					TextManager.instance.ResetDisplayTexts();
 					rainPrefab.GetComponent<RainScript>().RainIntensity = 1f;
 					rainPrefab.GetComponent<RainScript>().EnableWind = true;
+					character.GetComponent<StateHandler>().PlayStar();
 
 					StartCoroutine(AfterRain());
 				}
@@ -195,55 +196,66 @@ public class HandleWitResponse : MonoBehaviour
 		}
     }
 
-IEnumerator AfterRain()
+	public void OnError(string error, string message)
+	{
+		micWitInteraction.HandleException();
+	}
+
+	public void OnErrorDueToInactivity()
+	{
+		micWitInteraction.HandleException();
+	}
+	IEnumerator AfterRain()
 {
 	yield return new WaitForSeconds(4f);
 	rainPrefab.GetComponent<RainScript>().RainIntensity = 0f;
 	rainPrefab.GetComponent<RainScript>().EnableWind = false;
-	character.GetComponent<StateHandler>().PlayStar();
+	
 	yield return new WaitForSeconds(3f);
 	character.GetComponent<StateHandler>().PlayC3();
 
 }
-private void Update()
-{
-	if (Input.GetKeyDown(KeyCode.Alpha1))
-	{
-		//character.GetComponent<Animator>().Play("start");
-		character.transform.GetChild(0).GetComponent<Animator>().enabled = true;
-		AudioSource s = character.GetComponent<AudioSource>();
-		s.clip = debugAudio;
-		s.Play();
-	}
-	else if (Input.GetKeyDown(KeyCode.Alpha3))
-	{
-		character.GetComponent<StateHandler>().PlayC3();
-	}
-	else if (Input.GetKeyDown(KeyCode.Alpha4))
-		NextAnim(0);
-	else if (Input.GetKeyDown(KeyCode.Alpha5))
-		NextAnim(1);
-	else if (Input.GetKeyDown(KeyCode.Alpha6))
-		NextAnim(2);
-	else if (Input.GetKeyDown(KeyCode.Alpha7))
-		NextAnim(3);
-	else if (Input.GetKeyDown(KeyCode.Alpha8))
-		NextAnim(4);
-	else if (Input.GetKeyDown(KeyCode.Alpha9))
-		character.GetComponent<StateHandler>().PlayC9();
-}
-void NextAnim(int which)
-{
-	if (which == 0)
-		character.GetComponent<StateHandler>().PlayC4();
-	else if (which == 1)
-		character.GetComponent<StateHandler>().PlayC5();
-	else if (which == 2)
-		character.GetComponent<StateHandler>().PlayC6();
-	else if (which == 3)
-		character.GetComponent<StateHandler>().PlayC7();
-	else if (which == 4)
-		character.GetComponent<StateHandler>().PlayC8();
 
-}
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			//character.GetComponent<Animator>().Play("start");
+			character.transform.GetChild(0).GetComponent<Animator>().enabled = true;
+			AudioSource s = character.GetComponent<AudioSource>();
+			s.clip = debugAudio;
+			s.Play();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			character.GetComponent<StateHandler>().PlayC3();
+		}
+		else if (Input.GetKeyDown(KeyCode.Alpha4))
+			NextAnim(0);
+		else if (Input.GetKeyDown(KeyCode.Alpha5))
+			NextAnim(1);
+		else if (Input.GetKeyDown(KeyCode.Alpha6))
+			NextAnim(2);
+		else if (Input.GetKeyDown(KeyCode.Alpha7))
+			NextAnim(3);
+		else if (Input.GetKeyDown(KeyCode.Alpha8))
+			NextAnim(4);
+		else if (Input.GetKeyDown(KeyCode.Alpha9))
+			character.GetComponent<StateHandler>().PlayC9();
+	}
+
+	void NextAnim(int which)
+	{
+		if (which == 0)
+			character.GetComponent<StateHandler>().PlayC4();
+		else if (which == 1)
+			character.GetComponent<StateHandler>().PlayC5();
+		else if (which == 2)
+			character.GetComponent<StateHandler>().PlayC6();
+		else if (which == 3)
+			character.GetComponent<StateHandler>().PlayC7();
+		else if (which == 4)
+			character.GetComponent<StateHandler>().PlayC8();
+
+	}
 }

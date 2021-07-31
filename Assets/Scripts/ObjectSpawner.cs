@@ -34,7 +34,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] Vector3 afterPlacementScale;
 
     bool canSpawn = false;
-    bool hasInternet;
+    bool hasInternet = false;
 
     [SerializeField] GameObject tapToPlaceTxt;
     [SerializeField] ARPlaneManager aRPlaneManager;
@@ -43,6 +43,12 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject spawnVFX;
     [SerializeField] GameObject noInternetPanel;
 
+    Vector3 spawnPoint;
+
+    public void SetSpawnPoint(Vector3 pos)
+    {
+        spawnPoint = pos;
+    }
     void Start()
     {
         placementIndicator = FindObjectOfType<PlacementIndicator>();
@@ -101,7 +107,18 @@ public class ObjectSpawner : MonoBehaviour
         if (((Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) || Input.GetKeyDown(KeyCode.Space)) && canSpawn && hasInternet)
         {
 
-            Vector3 spawnPoint = placementIndicator.transform.position;
+            canSpawn = false;
+
+            //turn of placement indicator and spawing..
+            aRPlaneManager.enabled = false;
+
+            foreach (ARPlane plane in aRPlaneManager.trackables)
+            {
+                plane.gameObject.SetActive(false);
+            }
+
+            placementIndicator.enabled = false;
+            placementIndicator.gameObject.SetActive(false);
 
             objectToSpawn.SetActive(true);
 
@@ -112,19 +129,10 @@ public class ObjectSpawner : MonoBehaviour
             //scale up
             objectToSpawn.transform.DOScale(afterPlacementScale, 1f);
 
-            //turn of placement indicator and spawing..
-            aRPlaneManager.enabled = false;
-
-            foreach (ARPlane plane in aRPlaneManager.trackables)
-            {
-                plane.gameObject.SetActive(false);
-            }
-
-            placementIndicator.gameObject.SetActive(false);
+            
 
             tapToPlaceTxt.SetActive(false);
 
-            canSpawn = false;
 
             StartCoroutine(startScene());
 
