@@ -19,83 +19,83 @@ An augmented reality spatial storytelling, animated storybook-based learning pla
 
 
 ```
-A very large tree in the desert is almost dead.
- 
-Mr. Tree - (Dead tree shakes its head a little) Where am I! Why the desert around! (The tree will then look at the user and say in a tired voice) And hello little friend I'm Kirena, I'm so hungry will you give me some water?
- 
+A tree in the desert is almost dead.
+
+Mr. Tree - (Moribund tree shakes its head a little) Where am I! Why the desert around! (The tree will then look at the user and say in a tired voice) And hello little friend I'm Kirena, I'm so hungry will you give me some water?
+
 The user's screen will say - "Take this water for you" 
-(It will rain like rain on the tree as you read)
- 
+(It will rain like rain on the tree when you read)
+
 Mr. Tree - (drinks water and calms down) Thank you, little friend, how are you?
- 
+
 User - I'm fine!
- 
-Mr. Tree - but I'm not good. My mind is very bad.
- 
+
+Mr. Tree - but I'm not good. I'm feeling so sad.
+
 User - Why are you upset?
- 
-Mr. Tree - he talks a lot! (Happily) I was once as young as you. I am now 150 years old. Do you know how I grew up?
- 
-User - How did you get so big?
- 
+
+Mr. Tree - There's a lot of things! (Happily) Once I was young as like you. Now I am 150 years old. Do you know how I grew up?
+
+User - How did you grow up?
+
 Mr. Tree - Listen, one day when I was very young, a kind man planted me in his home garden.
- 
+
 User - Is that how you grew up?
- 
+
 Mr. Tree - No, the tree needs care and water to grow.
- 
+
 TAP water pots and help us grow with more water!
- 
-Mr. Tree - Ah thanks! You see, I had many brothers and sisters and friends with me before. But now I am alone! Do you know where they are now?
- 
+
+Mr. Tree - Ah thanks! I had many brothers and sisters and friends with me before. But now I am alone! Do you know where they are now?
+
 User - I don't know where they are now!
- 
-Mr. Trees - I don't even know where they are now, maybe no one is left! (Frustrated) Ah, how beautiful the world was before!
- 
+
+Mr. Trees - I don't even know where they are now, maybe no one is left! (Sad) Ah, how beautiful the world was before!
+
 User - What was the world like before?
- 
+
 Mr. Trees - Not so long ago the earth was like this, (bright eyes) the earth was surrounded by many beautiful greenery. Then we were all alive. We got regular food and our trees were full of flowers and fruits.
- 
+
 User- I like flowers, I like to eat fruits. But what is the food you need?
- 
+
 Mr. Trees - The main food of trees is water.
- 
+
 User - Oops! You don't eat anything else?
- 
+
 M. Trees - We also absorb carbon dioxide and provide you with the oxygen you need. Our contribution to temperature balance is incomparable. The birds use our twigs as their nests.
- 
+
 User- Wow! What else can you do?
- 
+
 Mr. Trees - We clean pollution from the air. Our roots hold the soil and make it strong, it prevents landslides and earthquake-resistant soil erosion.
- 
+
 User: Then why are you in the desert today? And why are you in this situation?
- 
+
 Mr. Tree - There are many big natural storms every year, and many of us have died in those storms.
- 
+
 User - What happened then?
- 
+
 Mr. Tree - People also used us to cut down buildings for their needs, build buildings there, urbanize. Merciful people reduced the care of the tree. There was no one else on earth to plant trees.
- 
+
 User: Is that how you all died?
- 
+
 Mr. Trees - That's right, that's how we became extinct one by one.
- 
+
 User - Oh no! Is this why the world is becoming a desert?
- 
+
 Mr. Tree - Yes! As we died, the amount of carbon dioxide in the air increased dramatically, causing global warming. And the earth is losing its natural balance and today the world is going to turn into a desert.
- 
+
 User- How can we get rid of this now.
- 
+
 Mr. Tree - You can easily get rid of these little friends!
- 
+
 User - so! Please tell me soon!
- 
+
 Mr. Trees - If you take care of the trees and plant a lot of trees, then the world will easily become beautiful again.
- 
+
 Keep tapping to plant more trees.
- 
-Then as soon as the user taps there will be a tree and at the end there will be a scene of beautiful world.
- 
+
+Then as soon as the user taps there will be a tree and at the end, there will be a scene of the beautiful world.
+
 Mr. Tree - Thank you little friend for building a beautiful world!
  
 ```
